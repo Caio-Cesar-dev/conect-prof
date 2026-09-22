@@ -1,0 +1,55 @@
+CONECT-PROF_API
+
+descrição:
+A solução proposta é de uma api que atenda as necessiades da empresa CONECT-PROF.
+A CONECT-PROF precisa de uma api que possa  cadastrar clientes, profissionais da aréa da contrução civil e tambem empresas fornecedoras. A api será capaz de cadastrar, listar, atualizar e excluir (clientes, fornecedores e proficionais cadastrados), a exclusaõ deve ser apenas lógica, mantendo o registo como inativo na banco de dados. *uma exclusão definitiva pode ser acrescido posteriomente.
+
+TIME: (1:32min)
+
+TECNOLOGIAS:
+Spring Boot 3
+Java 17
+Lombok
+MySQL
+JPA/Hibernate
+Maven
+Postman
+
+INICIANDO O PROJETO:
+
+--Criação do projeto no 'spring initializr'--
+
+Dependências adicionadas:
+*Spring Web
+*Spring Boot DevTools
+*Lombok
+*Spring data JPA
+*Validations
+
+Configurando o uso DevTools no Intellij:
+No IntelliJ precisamos configurar o projeto para o DevTools funcionar.
+
+settings -> build, execution, deployment > compiler:
+marcar a opção: Build project automatically
+depois -> Advanced Settings > compiler
+marcar a opção  Allow auto-make to start...
+
+CRIAÇÃO DO DB E DAS TABELA NO MYSQL
+
+create table clientes(
+    id bigint not null auto_increment,
+    nome varchar(100) not null,
+    email varchar(100) not null unique,
+    cpf varchar(14) not null unique,
+    telefone varchar(20) not null,
+    logradouro varchar(100) not null,
+    bairro varchar(100) not null,
+    cep varchar(9) not null,
+    complemento varchar(100),
+    numero varchar(20),
+    uf char(2) not null,
+    cidade varchar(100) not null,
+    ativo tinyint not null,		
+
+    primary key(id)
+);
