@@ -1,5 +1,6 @@
 package conectprof.api.cliente;
 
+import conectprof.api.endereco.DadosEnderecoDto;
 import conectprof.api.endereco.Endereco;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
@@ -20,5 +21,5 @@ public record DadosCadastroClienteDto(
         String telefone,
         @NotNull
         @Valid
-        Endereco endereco) {
+        DadosEnderecoDto endereco) {
 }

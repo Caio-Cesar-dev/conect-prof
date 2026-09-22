@@ -1,6 +1,7 @@
 package conectprof.api.endereco;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 public record DadosEnderecoDto(
 
@@ -9,6 +10,7 @@ public record DadosEnderecoDto(
         @NotBlank
         String bairro,
         @NotBlank
+        @Pattern(regexp = "\\d{8}")
         String cep,
         @NotBlank
         String cidade,

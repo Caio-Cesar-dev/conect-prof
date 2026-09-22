@@ -25,6 +25,7 @@ Dependências adicionadas:
 *Lombok
 *Spring data JPA
 *Validations
+*MySql Driver
 
 Configurando o uso DevTools no Intellij:
 No IntelliJ precisamos configurar o projeto para o DevTools funcionar.
@@ -34,8 +35,23 @@ marcar a opção: Build project automatically
 depois -> Advanced Settings > compiler
 marcar a opção  Allow auto-make to start...
 
-CRIAÇÃO DO DB E DAS TABELA NO MYSQL
+INCIANDO:
 
+criando as classes: 
+ClienteEntity
+DadosCadastroClienteDto
+Endereco
+DadosEnderecoDto
+
+---------------------------------
+Conecção com o banco de dados informações no arquivo application.properties
+ 
+
+CRIAÇÃO DO DB E DAS TABELA NO MYSQL (MySql Workbench)
+
+> CREATE DATABASE conect_prof;
+
+> Criação da tabela clientes no 
 create table clientes(
     id bigint not null auto_increment,
     nome varchar(100) not null,
