@@ -1,9 +1,8 @@
 package conectprof.api.controller;
 
-
-import conectprof.api.cliente.ClienteEntity;
-import conectprof.api.cliente.ClienteRepository;
-import conectprof.api.cliente.DadosCadastroClienteDto;
+import conectprof.api.fornecedor.DadosFornecedorDto;
+import conectprof.api.fornecedor.FornecedorEntity;
+import conectprof.api.fornecedor.FornecedorRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,15 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("clientes")
-public class ClienteController {
+@RequestMapping("fornecedores")
+public class FornecedorController {
 
     @Autowired
-    private ClienteRepository repository;
+    private FornecedorRepository repository;
 
     @PostMapping
     @Transactional
-    public void cadastrarCliente(@RequestBody @Valid DadosCadastroClienteDto dados){
-        repository.save(new ClienteEntity(dados));
+    public void cadastrarFornecedor(@RequestBody @Valid DadosFornecedorDto dadosFornecedor){
+        repository.save(new FornecedorEntity(dadosFornecedor));
     }
 }

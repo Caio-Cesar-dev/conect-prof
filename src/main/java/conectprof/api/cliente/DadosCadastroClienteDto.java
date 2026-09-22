@@ -1,7 +1,6 @@
 package conectprof.api.cliente;
 
 import conectprof.api.endereco.DadosEnderecoDto;
-import conectprof.api.endereco.Endereco;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
