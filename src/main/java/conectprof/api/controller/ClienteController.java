@@ -1,10 +1,7 @@
 package conectprof.api.controller;
 
 
-import conectprof.api.cliente.ClienteEntity;
-import conectprof.api.cliente.ClienteRepository;
-import conectprof.api.cliente.DadosCadastroClienteDto;
-import conectprof.api.cliente.DadosListagemClientesDto;
+import conectprof.api.cliente.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -29,5 +26,19 @@ public class ClienteController {
     @GetMapping
     public Page<DadosListagemClientesDto> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao){
         return repository.findAllByAtivoTrue(paginacao).map(DadosListagemClientesDto::new);
+    }
+
+    @PutMapping
+    @Transactional
+    public void atualizarCliente(@RequestBody @Valid DadosAtualizacaoCliente dados){
+        var cliente = repository.getReferenceById(dados.id());
+        cliente.atualizarInformacoes(dados);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void excluir(@PathVariable Long id){
+        var cliente = repository.getReferenceById(id);
+        cliente.excluir();
     }
 }
