@@ -5,6 +5,7 @@ import conectprof.api.fornecedor.FornecedorEntity;
 import conectprof.api.fornecedor.FornecedorRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,4 +24,6 @@ public class FornecedorController {
     public void cadastrarFornecedor(@RequestBody @Valid DadosFornecedorDto dadosFornecedor){
         repository.save(new FornecedorEntity(dadosFornecedor));
     }
+
+
 }

@@ -4,7 +4,7 @@ descrição:
 A solução proposta é de uma api que atenda as necessiades da empresa CONECT-PROF.
 A CONECT-PROF precisa de uma api que possa  cadastrar clientes, profissionais da aréa da contrução civil e tambem empresas fornecedoras. A api será capaz de cadastrar, listar, atualizar e excluir (clientes, fornecedores e proficionais cadastrados), a exclusaõ deve ser apenas lógica, mantendo o registo como inativo na banco de dados. *uma exclusão definitiva pode ser acrescido posteriomente.
 
-TIME: (1:32min)
+TIME: (1:32min + 1:25 + 2:07)
 
 TECNOLOGIAS:
 Spring Boot 3
@@ -37,11 +37,20 @@ marcar a opção  Allow auto-make to start...
 
 INCIANDO:
 
-criando as classes: 
+Criando as Classes:
+ 
 ClienteEntity
 DadosCadastroClienteDto
-Endereco
+ClienteRepository
+ClienteController
+
+Endereco 
 DadosEnderecoDto
+
+DadosFornecedorDto
+FornecedorEntity
+FornecedorRepository
+FornecedorController
 
 ---------------------------------
 Conecção com o banco de dados informações no arquivo application.properties
@@ -51,7 +60,8 @@ CRIAÇÃO DO DB E DAS TABELA NO MYSQL (MySql Workbench)
 
 > CREATE DATABASE conect_prof;
 
-> Criação da tabela clientes no 
+> Criação da tabela clientes:
+
 create table clientes(
     id bigint not null auto_increment,
     nome varchar(100) not null,
@@ -69,3 +79,41 @@ create table clientes(
 
     primary key(id)
 );
+
+Criação da tabela clientes :
+
+create table fornecedores(
+    id bigint not null auto_increment,
+    nome_fantasia varchar(100) not null,
+    email varchar(100) not null unique,
+    cnpj varchar(14) not null unique,
+    telefone varchar(20) not null,
+    logradouro varchar(100) not null,
+    bairro varchar(100) not null,
+    cep varchar(9) not null,
+    complemento varchar(100),
+    numero varchar(20),
+    uf char(2) not null,
+    cidade varchar(100) not null,
+    ativo tinyint not null,		
+
+    primary key(id)
+);
+-------------------------------------------------------------------
+Repositório GitHub
+Criação:
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/Caio-Cesar-dev/conect-prof.git
+git push -u origin main
+
+Adições posteriores:
+git remote add origin https://github.com/Caio-Cesar-dev/conect-prof.git
+git branch -M main
+git push -u origin main
+
+-----------------------------------------------------------------------------------
+QUADRO TRELLO
+https://trello.com/b/zF3JQDGs/api-conect-prof
