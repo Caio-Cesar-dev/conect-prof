@@ -1,9 +1,6 @@
 package conectprof.api.controller;
 
-import conectprof.api.profissional.DadosProfissionalDto;
-import conectprof.api.profissional.ProfissionalEntity;
-import conectprof.api.profissional.ProfissionalListagemDto;
-import conectprof.api.profissional.ProfissionalRepository;
+import conectprof.api.profissional.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -28,6 +25,20 @@ public class ProfissionalController {
     @GetMapping
     public Page<ProfissionalListagemDto> listagemProfissionais(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao){
         return repository.findAllByAtivoTrue(paginacao).map(ProfissionalListagemDto::new);
+    }
+
+    @PutMapping
+    @Transactional
+    public void atualizarProfissional(@Valid @RequestBody DadosAtualizacaoProfissionalDto dados){
+        var profissional = repository.getReferenceById(dados.id());
+        profissional.atualizaInformacoes(dados);
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void excluirProfissional(@PathVariable Long id){
+        var profissional = repository.getReferenceById(id);
+        profissional.excluirProfissional();
     }
 
 }

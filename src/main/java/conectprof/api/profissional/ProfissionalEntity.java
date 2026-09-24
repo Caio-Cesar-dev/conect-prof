@@ -39,5 +39,21 @@ public class ProfissionalEntity {
         this.endereco = new Endereco(dados.endereco());
 
     }
+
+    public void atualizaInformacoes(DadosAtualizacaoProfissionalDto dados) {
+        if (dados.nome() != null){
+            this.nome = dados.nome();
+        }
+        if (dados.telefone() != null){
+            this.telefone = dados.telefone();
+        }
+        if (dados.endereco() != null){
+            this.endereco.atualizarEndereco(dados.endereco());
+        }
+    }
+
+    public void excluirProfissional() {
+        this.ativo = false;
+    }
 }
 
