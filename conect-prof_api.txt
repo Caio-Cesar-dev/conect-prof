@@ -4,7 +4,7 @@ descrição:
 A solução proposta é de uma api que atenda as necessiades da empresa CONECT-PROF.
 A CONECT-PROF precisa de uma api que possa  cadastrar clientes, profissionais da aréa da contrução civil e também empresas fornecedoras. A api será capaz de cadastrar, listar, atualizar e excluir (clientes, fornecedores e proficionais cadastrados), a exclusaõ deve ser apenas lógica, mantendo o registo como inativo na banco de dados. *uma exclusão definitiva pode ser acrescido posteriomente.
 
-TIME: (8:11)
+TIME: (8:11 +2:05)
 
 TECNOLOGIAS:
 Spring Boot 3
@@ -83,6 +83,25 @@ create table fornecedores(
 
     primary key(id)
 );
+
+create table profissionais(
+    id bigint not null auto_increment,
+    nome varchar(100) not null,
+    email varchar(100) not null unique,
+    cpf varchar(14) not null unique,
+    telefone varchar(20) not null,
+    especialidade varchar(100) not null,
+    logradouro varchar(100) not null,
+    bairro varchar(100) not null,
+    cep varchar(9) not null,
+    complemento varchar(100),
+    numero varchar(20),
+    uf char(2) not null,
+    cidade varchar(100) not null,
+    ativo tinyint not null,		
+
+    primary key(id)
+);
 -------------------------------------------------------------------
 Repositório GitHub
 Criação:
@@ -101,3 +120,5 @@ git push -u origin main
 -----------------------------------------------------------------------------------
 QUADRO TRELLO
 https://trello.com/b/zF3JQDGs/api-conect-prof
+
+
