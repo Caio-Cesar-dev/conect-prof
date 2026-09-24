@@ -1,9 +1,6 @@
 package conectprof.api.controller;
 
-import conectprof.api.fornecedor.DadosFornecedorDto;
-import conectprof.api.fornecedor.DadosListagemFornecedorDto;
-import conectprof.api.fornecedor.FornecedorEntity;
-import conectprof.api.fornecedor.FornecedorRepository;
+import conectprof.api.fornecedor.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -28,6 +25,13 @@ public class FornecedorController {
     @GetMapping
     public Page<DadosListagemFornecedorDto> listarFornecedores(@PageableDefault(sort = {"nomeFantasia"}, size = 10) Pageable paginacao){
         return repository.findAllByAtivoTrue(paginacao).map(DadosListagemFornecedorDto::new);
+    }
+
+    @PutMapping
+    @Transactional
+    public void atualizarFornecedor(@RequestBody @Valid DadoAtualizacaoFornecedorDto dados){
+        var fornecedor = repository.getReferenceById(dados.id());
+        fornecedor.atualizarFornecedor(dados);
     }
 
 
