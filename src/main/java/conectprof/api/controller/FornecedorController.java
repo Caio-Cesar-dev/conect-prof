@@ -34,5 +34,12 @@ public class FornecedorController {
         fornecedor.atualizarFornecedor(dados);
     }
 
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void excluirFornecedor(@PathVariable Long id){
+        var fornecedor = repository.getReferenceById(id);
+        fornecedor.excluir();
+    }
+
 
 }

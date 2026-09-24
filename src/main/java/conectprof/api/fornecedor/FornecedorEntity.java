@@ -47,4 +47,8 @@ public class FornecedorEntity {
             this.endereco.atualizarEndereco(dados.endereco());
         }
     }
+
+    public void excluir() {
+        this.ativo = false;
+    }
 }
