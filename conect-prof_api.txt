@@ -4,7 +4,7 @@ descrição:
 A solução proposta é de uma api que atenda as necessiades da empresa CONECT-PROF.
 A CONECT-PROF precisa de uma api que possa  cadastrar clientes, profissionais da aréa da contrução civil e também empresas fornecedoras. A api será capaz de cadastrar, listar, atualizar e excluir (clientes, fornecedores e proficionais cadastrados), a exclusaõ deve ser apenas lógica, mantendo o registo como inativo na banco de dados. *uma exclusão definitiva pode ser acrescido posteriomente.
 
-TIME: (8:11 +2:05)
+TIME: (8:11 +2:05 + 2:10)
 
 TECNOLOGIAS:
 Spring Boot 3

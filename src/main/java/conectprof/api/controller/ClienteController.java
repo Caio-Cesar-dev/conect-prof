@@ -52,4 +52,10 @@ public class ClienteController {
 
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity detalharCliente(@PathVariable Long id){
+        var cliente = repository.getReferenceById(id);
+        return ResponseEntity.ok(new DadosDetalhamentoClienteDto(cliente));
+    }
 }

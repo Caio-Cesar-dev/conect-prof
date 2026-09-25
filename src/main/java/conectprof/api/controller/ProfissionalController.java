@@ -54,4 +54,10 @@ public class ProfissionalController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity detalharProfissional(@PathVariable Long id){
+        var profissional = repository.getReferenceById(id);
+        return ResponseEntity.ok(new DadosDetalhamentoProfissionalDto(profissional));
+    }
+
 }

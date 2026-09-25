@@ -51,5 +51,11 @@ public class FornecedorController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity detalharFornecedor(@PathVariable Long id){
+        var fornecedor = repository.getReferenceById(id);
+        return ResponseEntity.ok(new DadosDetalhamentoFornecedorDto(fornecedor));
+    }
+
 
 }
