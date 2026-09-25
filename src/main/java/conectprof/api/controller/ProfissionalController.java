@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("profissionais")
@@ -18,27 +20,38 @@ public class ProfissionalController {
 
     @Transactional
     @PostMapping
-    public void cadastrarProfissional(@Valid @RequestBody DadosProfissionalDto dados){
-        repository.save(new ProfissionalEntity(dados));
+    public ResponseEntity cadastrarProfissional(@Valid @RequestBody DadosProfissionalDto dados, UriComponentsBuilder uriBuilder){
+
+        var profissional = new ProfissionalEntity(dados);
+        repository.save(profissional);
+        var uri = uriBuilder.path("/profissionais/{id}").buildAndExpand(profissional.getId()).toUri();
+
+        return ResponseEntity.created(uri).body(new DadosDetalhamentoProfissionalDto(profissional));
     }
 
     @GetMapping
-    public Page<ProfissionalListagemDto> listagemProfissionais(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao){
-        return repository.findAllByAtivoTrue(paginacao).map(ProfissionalListagemDto::new);
+    public ResponseEntity<Page<ProfissionalListagemDto>> listagemProfissionais(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao){
+        var page = repository.findAllByAtivoTrue(paginacao).map(ProfissionalListagemDto::new);
+
+        return ResponseEntity.ok(page);
     }
 
     @PutMapping
     @Transactional
-    public void atualizarProfissional(@Valid @RequestBody DadosAtualizacaoProfissionalDto dados){
+    public ResponseEntity atualizarProfissional(@Valid @RequestBody DadosAtualizacaoProfissionalDto dados){
         var profissional = repository.getReferenceById(dados.id());
         profissional.atualizaInformacoes(dados);
+
+        return ResponseEntity.ok(new DadosDetalhamentoProfissionalDto(profissional));
     }
 
     @DeleteMapping("/{id}")
     @Transactional
-    public void excluirProfissional(@PathVariable Long id){
+    public ResponseEntity excluirProfissional(@PathVariable Long id){
         var profissional = repository.getReferenceById(id);
         profissional.excluirProfissional();
+
+        return ResponseEntity.noContent().build();
     }
 
 }
