@@ -1,4 +1,4 @@
-package conectprof.api.endereco;
+package conectprof.api.domain.endereco;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;

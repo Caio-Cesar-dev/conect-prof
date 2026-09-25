@@ -1,12 +1,11 @@
-package conectprof.api.fornecedor;
+package conectprof.api.domain.fornecedor;
 
-import conectprof.api.endereco.Endereco;
+import conectprof.api.domain.endereco.Endereco;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Getter
 @AllArgsConstructor

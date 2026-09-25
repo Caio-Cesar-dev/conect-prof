@@ -1,7 +1,7 @@
 package conectprof.api.controller;
 
 
-import conectprof.api.cliente.*;
+import conectprof.api.domain.cliente.*;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

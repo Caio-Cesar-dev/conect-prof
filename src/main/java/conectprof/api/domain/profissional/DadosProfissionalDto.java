@@ -1,6 +1,6 @@
-package conectprof.api.profissional;
+package conectprof.api.domain.profissional;
 
-import conectprof.api.endereco.DadosEnderecoDto;
+import conectprof.api.domain.endereco.DadosEnderecoDto;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

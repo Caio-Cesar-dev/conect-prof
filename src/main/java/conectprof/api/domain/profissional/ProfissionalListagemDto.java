@@ -1,4 +1,4 @@
-package conectprof.api.profissional;
+package conectprof.api.domain.profissional;
 
 public record ProfissionalListagemDto(
         Long id,

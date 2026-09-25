@@ -1,6 +1,6 @@
-package conectprof.api.fornecedor;
+package conectprof.api.domain.fornecedor;
 
-import conectprof.api.endereco.Endereco;
+import conectprof.api.domain.endereco.Endereco;
 
 public record DadosDetalhamentoFornecedorDto(
         Long id,

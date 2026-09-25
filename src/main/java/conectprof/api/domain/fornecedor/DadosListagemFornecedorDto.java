@@ -1,4 +1,4 @@
-package conectprof.api.fornecedor;
+package conectprof.api.domain.fornecedor;
 
 public record DadosListagemFornecedorDto(Long id, String nomeFantasia, String email, String cnpj) {
 

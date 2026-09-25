@@ -1,7 +1,6 @@
-package conectprof.api.cliente;
+package conectprof.api.domain.cliente;
 
-import conectprof.api.endereco.Endereco;
-import conectprof.api.profissional.DadosDetalhamentoProfissionalDto;
+import conectprof.api.domain.endereco.Endereco;
 
 public record DadosDetalhamentoClienteDto(
         Long id,

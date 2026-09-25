@@ -1,6 +1,6 @@
-package conectprof.api.cliente;
+package conectprof.api.domain.cliente;
 
-import conectprof.api.endereco.Endereco;
+import conectprof.api.domain.endereco.Endereco;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
